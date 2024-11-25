@@ -1,0 +1,7 @@
+services:
+  aoc2024:
+    image: golang:bookworm
+    ports:
+      - "8901:8901"
+    volumes:
+      - .:/opt/app
