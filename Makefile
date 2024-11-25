@@ -27,14 +27,6 @@ up: ## Start the service
 # -----------------------------------------------------------------------------
 # Development commands (##- comments for description)
 # -----------------------------------------------------------------------------
-.PHONY: format
-format: ##- Run code formatters
-	${DCR} echo format goes here
-
-.PHONY: lint
-lint: ##- Run the flake8 and black (readonly)
-	${DCR} echo lint goes here
-
 .PHONY: shell
 shell: ##- Run a bash shell
 	${DCR} bash
