@@ -1,5 +1,0 @@
-services:
-  aoc2024:
-    image: rust:alpine
-    volumes:
-      - .:/opt/app

@@ -2,27 +2,25 @@
 # Make configuration
 # -----------------------------------------------------------------------------
 PROJECT = $(shell basename $(CURDIR))
-DC = docker compose
-DCR = ${DC} run --rm --no-deps ${PROJECT}
 .DEFAULT_GOAL = help
 
 # -----------------------------------------------------------------------------
 # Setup commands (## comments for description)
 # -----------------------------------------------------------------------------
 .PHONY: init
-init: destroy build up ## Run this to setup and start the project from scratch (can be re-run to rebuild everything from scratch)
+init: destroy build run ## Run this to setup and start the project from scratch (can be re-run to rebuild everything from scratch)
 
 .PHONY: destroy
 destroy: ## Delete the previous setup
-	${DC} down --remove-orphans --rmi local
+	echo remove goes here
 
 .PHONY: build
 build: ## Build the project
-	${DC} build ${PROJECT}
+	docker build -t aoc2024 .
 
-.PHONY: up
-up: ## Start the service
-	${DC} up
+.PHONY: run
+run: ## Start the service
+	docker run -it --rm --name aoc2024 aoc2024
 
 # -----------------------------------------------------------------------------
 # Development commands (##- comments for description)
