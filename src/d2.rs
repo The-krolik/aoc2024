@@ -19,6 +19,7 @@ pub fn solve(file_path: &str) {
     println!("number of safe reports: {safe_report_count}");
 }
 
+/*
 fn check_report2(r: &Vec<i32>) -> bool {
     let mut dampened = false;
     let mut i = 0;
@@ -28,6 +29,7 @@ fn check_report2(r: &Vec<i32>) -> bool {
         i += 1;
     }
 }
+*/
 
 fn check_report(r: &Vec<i32>) -> bool {
     if (check_for_increasing(r) | check_for_decreasing(r)) & check_for_gradual_slope(r) {
