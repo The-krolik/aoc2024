@@ -5,6 +5,7 @@ pub fn solve(file_path: &str) {
         .expect("Should have been able to read the file");
 
     let mut safe_report_count = 0;
+    let mut safe_report_count_with_dampening = 0;
     for line in contents.lines() {
         let nums: Vec<i32> = line
             .split_whitespace()
@@ -14,22 +15,15 @@ pub fn solve(file_path: &str) {
         if check_report(&nums) {
             safe_report_count += 1;
         }
+
+        if check_with_dampening(&nums) {
+            safe_report_count_with_dampening += 1;
+        }
     }
 
     println!("number of safe reports: {safe_report_count}");
+    println!("number of safe reports with dampening: {safe_report_count_with_dampening}");
 }
-
-/*
-fn check_report2(r: &Vec<i32>) -> bool {
-    let mut dampened = false;
-    let mut i = 0;
-    while i < v.len() {
-         
-
-        i += 1;
-    }
-}
-*/
 
 fn check_report(r: &Vec<i32>) -> bool {
     if (check_for_increasing(r) | check_for_decreasing(r)) & check_for_gradual_slope(r) {
@@ -68,4 +62,30 @@ fn check_for_gradual_slope(v: &Vec<i32>) -> bool {
     }
 
     return true;
+}
+
+fn copy_and_remove_elem(v: &Vec<i32>, x: usize) -> Vec<i32> {
+    let mut new_vec: Vec<i32> = Vec::new();
+    for i in 0..v.len() {
+        if i != x {
+            new_vec.push(v[i]);
+        }
+    }
+
+    return new_vec;
+}
+
+fn check_with_dampening(v: &Vec<i32>) -> bool {
+    if check_report(v) {
+        return true;
+    }
+
+    for i in 0..v.len() {
+        let dampened_report = copy_and_remove_elem(v, i);
+        if check_report(&dampened_report) {
+            return true;
+        }
+    }
+
+   return false;
 }
