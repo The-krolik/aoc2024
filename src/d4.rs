@@ -66,8 +66,8 @@ fn check_letter(word_search: &Vec<Vec<char>>, x: usize, y: usize, word: &Vec<cha
 }
 
 fn xsearch(word_search: &Vec<Vec<char>>, pivot: char, letters: &Vec<char>) -> i32 {
-    let x_directions: [i32; 4] = [0, 1, 0, -1];
-    let y_directions: [i32; 4] = [-1, 0, 1, 0];
+    // let x_directions: [i32; 4] = [0, 1, 0, -1];
+    // let y_directions: [i32; 4] = [-1, 0, 1, 0];
 
     let mut count = 0;
     for y in 1..word_search.len() - 1 {
