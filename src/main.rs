@@ -6,6 +6,7 @@ pub mod bin {
 mod d2;
 mod d4;
 mod d5;
+mod d6;
 
 fn main() {
     println!("day to run:");
@@ -20,6 +21,7 @@ fn main() {
         // "3" => d3::solve("./src/tests/data/d3/problem.txt"),
         "4" => d4::solve("./src/tests/data/d4/problem.txt"),
         "5" => d5::solve("./src/tests/data/d5/problem.txt"),
+        "6" => d6::solve("./src/tests/data/d6/problem.txt"),
         _ => println!("Error: day does not exist"),
     }
 }
